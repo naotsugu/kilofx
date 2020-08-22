@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+    id "org.openjfx.javafxplugin" version "0.0.9"
+}
+
+repositories {
+    jcenter()
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+    modularity.inferModulePath = true
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testImplementation 'org.assertj:assertj-core:3.16.1'
+}
+
+application {
+    mainClassName = 'com.mammb.kilofx.App'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+javafx {
+    version = '14'
+    modules = [ 'javafx.controls' ]
+}
